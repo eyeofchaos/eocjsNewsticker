@@ -36,3 +36,7 @@ $(function() {
 ## Notice
 
 Please bear in mind, that this project is in a very early stage of development, so please have mercy with me :)
+
+## License
+
+Released under the MIT license - https://opensource.org/licenses/MIT
