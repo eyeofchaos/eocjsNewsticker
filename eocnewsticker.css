@@ -1,0 +1,21 @@
+/* eocNewsticker */
+
+.eocnewsticker {
+  padding: 10px 0;
+  background-color: #eee;
+}
+
+.eocnewsticker > div {
+  position: relative;
+  height: 20px;
+  overflow: hidden;
+}
+
+.eocnewsticker > div > div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+}
