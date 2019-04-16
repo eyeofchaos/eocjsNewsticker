@@ -1,2 +1,2 @@
-# newsticker
+# eocNewsticker
 A simple jQuery newsticker plugin
