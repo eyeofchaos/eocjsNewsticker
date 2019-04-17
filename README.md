@@ -33,6 +33,10 @@ $(function() {
     * timeout: The time the slider waits after domready, before starting to run
     * divider: The signs used as a divider between the text blocks (if the text is not long enough to fill the whole width)
 
+## Future Development
+
+I intend to read the news from a JSON file. Therefore the newsticker will be updated on-the-fly in a constant interval.
+
 ## Notice
 
 Please bear in mind, that this project is in a very early stage of development, so please have mercy with me :)

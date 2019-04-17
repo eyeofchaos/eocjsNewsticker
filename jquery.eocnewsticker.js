@@ -33,14 +33,14 @@
       var innerWidth = inner.width();
 
       while (containerWidth > innerWidth) {
-        inner.html(inner.html() + ' ' + content);
+        inner.append(' ' + content);
         innerWidth = inner.width();
       }
 
-      inner.html(inner.html() + '&nbsp;');
+      inner.append('&nbsp;');
       width = inner.width();
       speed = settings.speed * width;
-      container.html(container.html() + container.html());
+      container.append(container.html());
 
       slideOne = obj.find('> div > div').eq(0);
       slideTwo = obj.find('> div > div').eq(1).css({'left': width});
