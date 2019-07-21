@@ -1,15 +1,15 @@
-# eocNewsticker: A simple jQuery newsticker plugin
+# eocNewsticker: A jQuery newsticker plugin
 
 ## Requirements
 
-jQuery 1.10.2 or higher
+jQuery 2.2.4 or higher
 
 ## Usage
 
 1. Include the provided JS/CSS files
 
 ```html
-<script src="jquery.eocnewsticker.js"></script>
+<script src="eocnewsticker.js"></script>
 <link rel="stylesheet" href="eocnewsticker.css">
 ```
 
