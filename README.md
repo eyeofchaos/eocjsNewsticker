@@ -9,21 +9,21 @@ jQuery 2.2.4 or higher
 1. Include the provided JS/CSS files
 
 ```html
-<script src="eocnewsticker.js"></script>
-<link rel="stylesheet" href="eocnewsticker.css">
+<script src="eoc-newsticker.js"></script>
+<link rel="stylesheet" href="eoc-newsticker.css">
 ```
 
 2. Write your HTML Content
 
 ```html
-<div id="eocnewsticker">The quick brown fox jumps over the lazy dog</div>
+<div id="example">The quick brown fox jumps over the lazy dog</div>
 ```
 
 3. Invoke the newsticker on your selected HTML Tag
 
 ```javascript
 $(function() {
-  $("#eocnewsticker").eocNewsticker();
+  $("#example").eocNewsticker();
 });
 ```
 
