@@ -1,17 +1,17 @@
 /* eocNewsticker */
 
-.eocnewsticker {
+.eoc-newsticker {
   padding: 10px 0;
   background-color: #eee;
 }
 
-.eocnewsticker > div {
+.eoc-newsticker > div {
   position: relative;
   height: 20px;
   overflow: hidden;
 }
 
-.eocnewsticker > div > div {
+.eoc-newsticker > div > div {
   position: absolute;
   left: 0;
   top: 0;

@@ -8,29 +8,29 @@
   $.fn.eocNewsticker = function(options) {
 
     // Settings
-    var element = $(this);
-    var defaults = {
+    let element = $(this);
+    let defaults = {
       speed: 20,
       timeout: 2,
       divider: '+++'
     };
-    var settings = $.extend({}, defaults, options);
+    let settings = $.extend({}, defaults, options);
 
     // Slider Vars
-    var slideOne;
-    var slideTwo;
-    var speed;
-    var width;
+    let slideOne;
+    let slideTwo;
+    let speed;
+    let width;
 
     // Init
     function init(obj) {
 
-      obj.addClass('eocnewsticker').html('<div><div>' + obj.html() + ' ' + settings.divider + '</div></div>');
-      var container = obj.find('> div');
-      var inner = obj.find('> div > div');
-      var content = inner.html();
-      var containerWidth = container.width();
-      var innerWidth = inner.width();
+      obj.addClass('eoc-newsticker').html('<div><div>' + obj.html() + ' ' + settings.divider + '</div></div>');
+      let container = obj.find('> div');
+      let inner = obj.find('> div > div');
+      let content = inner.html();
+      let containerWidth = container.width();
+      let innerWidth = inner.width();
 
       while (containerWidth > innerWidth) {
         inner.append(' ' + content);
