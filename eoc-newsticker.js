@@ -1,5 +1,5 @@
 /*!
- * eocNewsticker 0.1-pre
+ * eocNewsticker 0.2-pre
  * Copyright (c) 2019 Dieter Schmitt
  */
 
