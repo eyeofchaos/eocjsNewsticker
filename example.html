@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>eocNewsticker: A jQuery newsticker plugin</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="eoc-newsticker.js"></script>
+<link rel="stylesheet" href="eoc-newsticker.css">
+<script>
+$(function() {
+  $("#example").eocNewsticker({
+    speed: 20,
+    timeout: 2,
+    divider: "+++"
+  });
+});
+</script>
+<style>
+body {
+  font-family: arial, sans-serif;
+}
+</style>
+</head>
+<body>
+
+<div id="container">
+  <h1>Quick example:</h1>
+  <div id="example">The quick brown fox jumps over the lazy dog</div>
+</div>
+
+</body>
+</html>
