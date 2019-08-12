@@ -6,8 +6,8 @@
 (function($) {
   $.fn.eocNewsticker = function(options) {
 
-    // Settings
-    let element = $(this);
+    // _____ Options _____
+
     let defaults = {
       speed: 20,
       timeout: 2,
@@ -15,18 +15,27 @@
     };
     let settings = $.extend({}, defaults, options);
 
-    // Slider Vars
-    let slideOne;
-    let slideTwo;
-    let speed;
-    let width;
+    // _______ Inner Variables _______
 
-    // Init
-    function init(obj) {
+    let element = this;
+    let container = {};
+    let inner = {};
 
-      obj.addClass('eoc-newsticker').html('<div><div>' + obj.html() + ' ' + settings.divider + '</div></div>');
-      let container = obj.find('> div');
-      let inner = obj.find('> div > div');
+    // _______ Init _______
+
+    function init() {
+      create();
+      start();
+    }
+
+    // _______ Create _______
+
+    function create() {
+
+      element.addClass('eoc-newsticker').html('<div><div>' + element.html() + ' ' + settings.divider + '</div></div>');
+      container = element.find('> div');
+      inner = element.find('> div > div');
+
       let content = inner.html();
       let containerWidth = container.width();
       let innerWidth = inner.width();
@@ -37,17 +46,31 @@
       }
 
       inner.append('&nbsp;');
-      width = inner.width();
-      speed = settings.speed * width;
       container.append(container.html());
-
-      slideOne = obj.find('> div > div').eq(0);
-      slideTwo = obj.find('> div > div').eq(1).css({'left': width});
 
     }
 
-    // Animation
-    function animateSlide(slide, start, destination) {
+    // _______ Start _______
+
+    function start() {
+
+      setTimeout(function() {
+
+        let inner = element.find('> div > div');
+        let width = inner.width();
+        let speed = settings.speed * width;
+        let slideOne = inner.eq(0);
+        let slideTwo = inner.eq(1).css({'left': width});
+        animateSlide(slideOne, 0, -width, width, speed);
+        animateSlide(slideTwo, width, 0, width, speed);
+
+      }, (settings.timeout * 1000));
+
+    }
+
+    // _______ Animation _______
+
+    function animateSlide(slide, start, destination, width, speed) {
 
       slide.animate(
         {left: destination},
@@ -56,26 +79,20 @@
         function() {
           if (start === 0) {
             slide.css({'left': width});
-            animateSlide(slide, width, 0);
+            animateSlide(slide, width, 0, width, speed);
           } else {
-            animateSlide(slide, 0, -width);
+            animateSlide(slide, 0, -width, width, speed);
           }
         }
       );
 
     }
 
-    // Start
-    function startNewsticker() {
-      animateSlide(slideOne, 0, -width);
-      animateSlide(slideTwo, width, 0);
-    }
+    // _______ Init _______
 
-    // Init
-    init(element);
-    setTimeout(startNewsticker, (settings.timeout * 1000));
+    init();
 
     return this;
 
-  }; 
+  };
 })(jQuery);
