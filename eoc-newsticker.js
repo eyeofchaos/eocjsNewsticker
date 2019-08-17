@@ -15,7 +15,7 @@
       divider:  '+++',
       type:     'static',   // static or ajax
       source:   '',         // ajax source (url)
-      dataType: '',         // data type of the expected file (json or jsonp)
+      dataType: 'json',     // data type of the expected file (json or jsonp)
       callback: 'callback', // used for jsonp
       interval: 120         // polling interval of the ajax source (seconds)
     };

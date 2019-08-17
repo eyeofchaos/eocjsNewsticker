@@ -14,16 +14,13 @@ $(function() {
 
   $("#example-1").eocNewsticker({
     speed: 25,
-    timeout: 0.5,
-    divider: "+++"
+    timeout: 0.5
   });
 
   $("#example-2").eocNewsticker({
-    speed: 20,
     divider: "***",
     type: 'ajax',
     source: 'example-json.php',
-    dataType: 'json',
     interval: 30
   });
 

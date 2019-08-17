@@ -41,18 +41,18 @@ $(function() {
 
 4. Options
 
-    * speed: The time it takes (in seconds) to move the text 1000px from right to left (normalized)
-    * timeout: The time the slider waits after domready, before starting to run
-    * divider: The signs used as a divider between the text blocks
+    * speed: The time it takes (in seconds) to move the text 1000px from right to left (normalized) (default: 20)
+    * timeout: The time the slider waits after domready, before starting to run (default: 1)
+    * divider: The signs used as a divider between the text blocks (default: +++)
     * type:
-      * static: Regular usage
+      * static: Regular usage (default)
       * ajax: Get contents with AJAX from a JSON file
     * source: AJAX source (URL)
     * dataType:
-      * json: Regular JSON file from same domain
+      * json: Regular JSON file from same domain (default)
       * jsonp: JSONP from any source, can be cross-domain
-    * callback: Used for jsonp
-    * interval: Polling interval of the AJAX source
+    * callback: Used for jsonp (default: callback)
+    * interval: Polling interval of the AJAX source (default: 120)
 
 ## Example
 
