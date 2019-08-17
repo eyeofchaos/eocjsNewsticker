@@ -56,7 +56,7 @@ $(function() {
 
 ## Example
 
-Here is a working <a href="https://nightside.de/eoc-newsticker/example.html">eocNewsticker example</a>.
+Here are some working <a href="https://nightside.de/eoc-newsticker/example.html">eocNewsticker examples</a>.
 
 ## License
 
