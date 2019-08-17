@@ -11,10 +11,20 @@
 <script>
 
 $(function() {
-  $("#example").eocNewsticker({
+  $("#example-1").eocNewsticker({
     speed: 20,
     timeout: 2,
-    divider: "+++"
+    divider: "+++",
+    type: 'static'
+  });
+});
+
+$(function() {
+  $("#example-2").eocNewsticker({
+    speed: 20,
+    timeout: 2,
+    divider: "+++",
+    type: 'ajax'
   });
 });
 
@@ -31,8 +41,11 @@ body {
 
 <div id="container">
 
-  <h1>Quick example:</h1>
-  <div id="example">The quick brown fox jumps over the lazy dog</div>
+  <h1>Quick static example:</h1>
+  <div id="example-1">The quick brown fox jumps over the lazy dog</div>
+
+  <h1>Quick AJAX example:</h1>
+  <div id="example-2"></div>
 
 </div>
 
