@@ -54,10 +54,9 @@ $(function() {
     * callback: Used for jsonp
     * interval: Polling interval of the AJAX source
 
-5. Live example
+5. Example
 
-You can find a working example unter the following link.
-https://nightside.de/eoc-newsticker/example.html
+Here is a working <a href="https://nightside.de/eoc-newsticker/example.html">eocNewsticker example</a>.
 
 ## License
 
