@@ -13,15 +13,20 @@ jQuery 2.2.4 or higher
 <link rel="stylesheet" href="eoc-newsticker.css">
 ```
 
-2a. Write your HTML Content (only for static use)
+2. Static or AJAX usage
+
+Write your HTML Content (only for static use)
 
 ```html
 <div id="example">The quick brown fox jumps over the lazy dog</div>
 ```
 
-OR
+-OR-
 
-2b. Provide a source for AJAX load (see example)
+```html
+<div id="example"></div>
+```
+Leave the HTML empty and provide a source for AJAX load (see example)
 
 3. Invoke the newsticker on your selected HTML Tag
 
