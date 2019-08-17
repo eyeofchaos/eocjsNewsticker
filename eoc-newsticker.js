@@ -14,8 +14,9 @@
       timeout:  2,
       divider:  '+++',
       type:     'static', // static or ajax
-      source:   '',       // ajax source (json file)
-      interval: 600       // re-fetch ajax source (seconds)
+      source:   '',       // ajax source (url)
+      mime:     '',       // mime-type of the expected file (json or jsonp)
+      interval: 120       // polling interval of the ajax source (seconds)
     };
     let settings = $.extend({}, defaults, options);
 
