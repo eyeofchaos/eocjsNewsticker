@@ -14,6 +14,7 @@
       timeout:  2,
       divider:  '+++',
       type:     'static', // static or ajax
+      source:   '',       // ajax source (json file)
       interval: 600       // re-fetch ajax source (seconds)
     };
     let settings = $.extend({}, defaults, options);
