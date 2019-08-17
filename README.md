@@ -43,7 +43,7 @@ $(function() {
 
     * speed: The time it takes (in seconds) to move the text 1000px from right to left (normalized)
     * timeout: The time the slider waits after domready, before starting to run
-    * divider: The signs used as a divider between the text blocks (if the text is not long enough to fill the whole width)
+    * divider: The signs used as a divider between the text blocks
     * type:
       * static: Regular usage
       * ajax: Get contents with AJAX from a JSON file
