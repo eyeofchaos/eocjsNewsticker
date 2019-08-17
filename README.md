@@ -54,6 +54,11 @@ $(function() {
     * callback: Used for jsonp
     * interval: Polling interval of the AJAX source
 
+5. Live example
+
+You can find a working example unter the following link.
+https://nightside.de/eoc-newsticker/example.html
+
 ## License
 
 Released under the MIT license - https://opensource.org/licenses/MIT
