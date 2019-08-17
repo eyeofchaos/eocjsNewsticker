@@ -11,21 +11,31 @@
 <script>
 
 $(function() {
-  $("#example-1").eocNewsticker({
-    speed: 20,
-    timeout: 2,
-    divider: "+++",
-    type: 'static'
-  });
-});
 
-$(function() {
+  $("#example-1").eocNewsticker({
+    speed: 25,
+    timeout: 0.5,
+    divider: "+++"
+  });
+
   $("#example-2").eocNewsticker({
     speed: 20,
-    timeout: 2,
-    divider: "+++",
-    type: 'ajax'
+    divider: "***",
+    type: 'ajax',
+    source: 'example-json.php',
+    dataType: 'json',
+    interval: 30
   });
+
+  $("#example-3").eocNewsticker({
+    speed: 15,
+    divider: "|",
+    type: 'ajax',
+    source: 'example-json.php',
+    dataType: 'jsonp',
+    interval: 30
+  });
+
 });
 
 </script>
@@ -44,8 +54,11 @@ body {
   <h1>Quick static example:</h1>
   <div id="example-1">The quick brown fox jumps over the lazy dog</div>
 
-  <h1>Quick AJAX example:</h1>
+  <h1>Quick AJAX example with JSON:</h1>
   <div id="example-2"></div>
+
+  <h1>Quick AJAX example with JSONP (Cross-Domain):</h1>
+  <div id="example-3"></div>
 
 </div>
 

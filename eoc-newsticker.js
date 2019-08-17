@@ -11,12 +11,13 @@
 
     let defaults = {
       speed:    20,
-      timeout:  2,
+      timeout:  1,
       divider:  '+++',
-      type:     'static', // static or ajax
-      source:   '',       // ajax source (url)
-      mime:     '',       // mime-type of the expected file (json or jsonp)
-      interval: 120       // polling interval of the ajax source (seconds)
+      type:     'static',   // static or ajax
+      source:   '',         // ajax source (url)
+      dataType: '',         // data type of the expected file (json or jsonp)
+      callback: 'callback', // used for jsonp
+      interval: 120         // polling interval of the ajax source (seconds)
     };
     let settings = $.extend({}, defaults, options);
 
@@ -43,11 +44,10 @@
 
     function create() {
 
-      self.addClass('eoc-newsticker').html('<div class="eoc-newsticker-container"><div class="eoc-newsticker-loader" style="display: none;"></div><div class="eoc-newsticker-one"></div><div class="eoc-newsticker-two"></div></div>');
+      self.addClass('eoc-newsticker').html('<div class="eoc-newsticker-container"><div class="eoc-newsticker-one"></div><div class="eoc-newsticker-two"></div></div>');
 
       container = self.find('.eoc-newsticker-container');
       one = self.find('.eoc-newsticker-one');
-      // one.css('background', 'green');
       two = self.find('.eoc-newsticker-two');
       both = self.find('.eoc-newsticker-one, .eoc-newsticker-two');
 
@@ -58,14 +58,54 @@
     function start() {
 
       if (settings.type === 'static') {
+
         content = content + ' ' + settings.divider;
         run(content, (settings.timeout * 1000));
+
       } else if (settings.type === 'ajax') {
-        self.find('.eoc-newsticker-loader').show();
-        // Show spinner
-        // Get content from AJAX
-        // Then run(content, 0);
+
+        container.prepend('<div class="eoc-newsticker-loader"></div>');
+        $.when(ajax(settings.source, settings.dataType, settings.callback)).done(function() {
+
+          container.find('.eoc-newsticker-loader').fadeOut(300, function() {
+            run(content, 0);
+            $(this).remove();
+          });
+
+          setInterval(function() {
+            $.when(ajax(settings.source, settings.dataType, settings.callback)).done(function() {
+              oneNeedsUpdate = true;
+              twoNeedsUpdate = true;
+            });
+          }, settings.interval * 1000);
+
+        });
+
       }
+
+    }
+
+    // _______ Ajax _______
+
+    function ajax(source, dataType, callback) {
+
+      return $.ajax({
+        url: source,
+        dataType: dataType,
+        jsonpCallback: callback,
+        success: function(data) {
+          content = '';
+          for (let property in data) {
+            if (data.hasOwnProperty(property)) {
+              if (content === '') {
+                content = data[property] + ' ' + settings.divider;
+              } else {
+                content = content + ' ' + data[property] + ' ' + settings.divider;
+              }
+            }
+          }
+        }
+      });
 
     }
 
@@ -115,11 +155,9 @@
           if (start === 0) {
 
             if (slide === one && oneNeedsUpdate) {
-              // console.log('UPDATE ONE REGULAR');
               update(one, content);
               oneNeedsUpdate = false;
             } else if (slide === two && twoNeedsUpdate) {
-              // console.log('UPDATE TWO REGULAR');
               update(two, content);
               twoNeedsUpdate = false;
             }
@@ -149,11 +187,9 @@
 
         if ($(window).width() > windowWidth) {
           if (one.position().left > 0) {
-            // console.log('UPDATE ONE IMMEDIATELY');
             update(one, content);
             twoNeedsUpdate = true;
           } else if (two.position().left > 0) {
-            // console.log('UPDATE TWO IMMEDIATELY');
             update(two, content);
             oneNeedsUpdate = true;
           }

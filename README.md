@@ -1,5 +1,7 @@
 # eocNewsticker: A jQuery newsticker plugin
 
+eocNewsticker is a fully responsive newsticker. It fits size and contents to any device and window size. It can be configured to read it's contents from the invoking HTML-document or from an AJAX-source (JSON or JSONP). If the latter is chosen, the newsticker is updated in a given interval on-the-fly.
+
 ## Requirements
 
 jQuery 2.2.4 or higher
@@ -42,17 +44,15 @@ $(function() {
     * speed: The time it takes (in seconds) to move the text 1000px from right to left (normalized)
     * timeout: The time the slider waits after domready, before starting to run
     * divider: The signs used as a divider between the text blocks (if the text is not long enough to fill the whole width)
-    * type (static or ajax): Regular usage (static) or get contents with ajax as a json file (ajax)
-    * source: AJAX source (JSON file)
-    * interval: AJAX update interval in seconds
-
-## Future Development
-
-I intend to read the news from a JSON file. Therefore the newsticker will be updated on-the-fly in a constant interval.
-
-## Notice
-
-Please bear in mind, that this project is in a very early stage of development, so please have mercy with me :)
+    * type:
+      * static: Regular usage
+      * ajax: Get contents with AJAX from a JSON file
+    * source: AJAX source (URL)
+    * dataType:
+      * json: Regular JSON file from same domain
+      * jsonp: JSONP from any source, can be cross-domain
+    * callback: Used for jsonp
+    * interval: Polling interval of the AJAX source
 
 ## License
 
