@@ -54,7 +54,7 @@ $(function() {
     * callback: Used for jsonp
     * interval: Polling interval of the AJAX source
 
-5. Example
+## Example
 
 Here is a working <a href="https://nightside.de/eoc-newsticker/example.html" target="blank">eocNewsticker example</a>.
 
