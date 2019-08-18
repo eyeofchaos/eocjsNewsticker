@@ -1,6 +1,6 @@
-# eocNewsticker: A jQuery newsticker plugin
+# eocjsNewsticker: A jQuery newsticker plugin
 
-eocNewsticker is a fully responsive newsticker. It adjusts size and content to any device and window size. It can be configured to read it's contents from the invoking HTML-document or from an AJAX-source (JSON or JSONP). If AJAX is chosen, the newsticker is updated in a given interval on-the-fly.
+eocjsNewsticker is a fully responsive newsticker. It adjusts size and content to any device and window size. It can be configured to read it's contents from the invoking HTML-document or from an AJAX-source (JSON or JSONP). If AJAX is chosen, the newsticker is updated in a given interval on-the-fly.
 
 ## Requirements
 
@@ -11,8 +11,8 @@ jQuery 2.2.4 or higher
 1. Include the provided JS/CSS files
 
 ```html
-<script src="eoc-newsticker.js"></script>
-<link rel="stylesheet" href="eoc-newsticker.css">
+<script src="eocjs-newsticker.js"></script>
+<link rel="stylesheet" href="eocjs-newsticker.css">
 ```
 
 2. Static or AJAX usage
@@ -35,7 +35,7 @@ Leave the HTML empty and provide a source for AJAX load (see example)
 
 ```javascript
 $(function() {
-  $("#example").eocNewsticker();
+  $("#example").eocjsNewsticker();
 });
 ```
 
@@ -56,7 +56,7 @@ $(function() {
 
 ## Example
 
-Here are some working <a href="https://nightside.de/eoc-newsticker/example.html">eocNewsticker examples</a>.
+Here are some working <a href="https://nightside.de/eocjs-newsticker/example.html">eocjsNewsticker examples</a>.
 
 ## License
 

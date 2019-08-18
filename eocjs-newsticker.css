@@ -1,18 +1,18 @@
-/* eocNewsticker */
+/* eocjsNewsticker */
 
-.eoc-newsticker {
+.eocjs-newsticker {
   padding: 10px 0;
   background-color: #eee;
 }
 
-.eoc-newsticker .eoc-newsticker-container {
+.eocjs-newsticker .eocjs-newsticker-container {
   position: relative;
   height: 20px;
   overflow: hidden;
 }
 
-.eoc-newsticker .eoc-newsticker-one,
-.eoc-newsticker .eoc-newsticker-two {
+.eocjs-newsticker .eocjs-newsticker-one,
+.eocjs-newsticker .eocjs-newsticker-two {
   position: absolute;
   left: 0;
   top: 0;
@@ -21,7 +21,7 @@
   white-space: nowrap;
 }
 
-.eoc-newsticker-loader {
+.eocjs-newsticker-loader {
   position: absolute;
   left: calc(50% - 10px);
   width: 16px;
@@ -30,10 +30,10 @@
   border: 2px solid #555555;
   border-top: 2px solid transparent;
   border-radius: 50%;
-  animation: eoc-newsticker-spin 1s linear infinite;
+  animation: eocjs-newsticker-spin 1s linear infinite;
 }
 
-@keyframes eoc-newsticker-spin {
+@keyframes eocjs-newsticker-spin {
   0% {
     transform: rotate(0deg);
   }

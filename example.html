@@ -4,27 +4,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
-<title>eocNewsticker: A jQuery newsticker plugin</title>
+<title>eocjsNewsticker: A jQuery newsticker plugin</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="eoc-newsticker.js"></script>
-<link rel="stylesheet" href="eoc-newsticker.css">
+<script src="eocjs-newsticker.js"></script>
+<link rel="stylesheet" href="eocjs-newsticker.css">
 <script>
 
 $(function() {
 
-  $("#example-1").eocNewsticker({
+  $("#example-1").eocjsNewsticker({
     speed: 25,
     timeout: 0.5
   });
 
-  $("#example-2").eocNewsticker({
+  $("#example-2").eocjsNewsticker({
     divider: "***",
     type: 'ajax',
     source: 'example-json.php',
     interval: 30
   });
 
-  $("#example-3").eocNewsticker({
+  $("#example-3").eocjsNewsticker({
     speed: 15,
     divider: "|",
     type: 'ajax',
@@ -48,7 +48,7 @@ body {
 
 <div id="container">
 
-  <h1>eocNewsticker examples</h1>
+  <h1>eocjsNewsticker examples</h1>
 
   <h2>Static</h2>
   <div id="example-1">The quick brown fox jumps over the lazy dog</div>
@@ -60,7 +60,7 @@ body {
   <div id="example-3"></div>
 
   <br><br>
-  <div>For more information see the <a href="https://github.com/eyeofchaos/eocNewsticker" target="_blank">eocNewsticker GitHub repository</a>.</div>
+  <div>For more information see the <a href="https://github.com/eyeofchaos/eocjsNewsticker" target="_blank">eocjsNewsticker GitHub repository</a>.</div>
 
 </div>
 

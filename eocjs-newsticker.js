@@ -1,11 +1,11 @@
 /*!
- * eocNewsticker 0.2
+ * eocjsNewsticker 0.3
  * Copyright (c) 2019 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
 
 (function($) {
-  $.fn.eocNewsticker = function(options) {
+  $.fn.eocjsNewsticker = function(options) {
 
     // _____ Options _____
 
@@ -44,12 +44,12 @@
 
     function create() {
 
-      self.addClass('eoc-newsticker').html('<div class="eoc-newsticker-container"><div class="eoc-newsticker-one"></div><div class="eoc-newsticker-two"></div></div>');
+      self.addClass('eocjs-newsticker').html('<div class="eocjs-newsticker-container"><div class="eocjs-newsticker-one"></div><div class="eocjs-newsticker-two"></div></div>');
 
-      container = self.find('.eoc-newsticker-container');
-      one = self.find('.eoc-newsticker-one');
-      two = self.find('.eoc-newsticker-two');
-      both = self.find('.eoc-newsticker-one, .eoc-newsticker-two');
+      container = self.find('.eocjs-newsticker-container');
+      one = self.find('.eocjs-newsticker-one');
+      two = self.find('.eocjs-newsticker-two');
+      both = self.find('.eocjs-newsticker-one, .eocjs-newsticker-two');
 
     }
 
@@ -64,10 +64,10 @@
 
       } else if (settings.type === 'ajax') {
 
-        container.prepend('<div class="eoc-newsticker-loader"></div>');
+        container.prepend('<div class="eocjs-newsticker-loader"></div>');
         $.when(ajax(settings.source, settings.dataType, settings.callback)).done(function() {
 
-          container.find('.eoc-newsticker-loader').fadeOut(300, function() {
+          container.find('.eocjs-newsticker-loader').fadeOut(300, function() {
             run(content, 0);
             $(this).remove();
           });
