@@ -1,5 +1,5 @@
 /*!
- * eocNewsticker 0.2-pre
+ * eocNewsticker 0.2
  * Copyright (c) 2019 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
