@@ -1,10 +1,10 @@
 /*!
- * eocjsNewsticker 0.3
- * Copyright (c) 2019 Dieter Schmitt
+ * eocjsNewsticker 0.3.1
+ * Copyright (c) 2020 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
 
-(function($) {
+(function($, window, document, undefined) {
   $.fn.eocjsNewsticker = function(options) {
 
     // _____ Options _____
@@ -210,4 +210,4 @@
     return this;
 
   };
-})(jQuery);
+})(jQuery, window, document);
