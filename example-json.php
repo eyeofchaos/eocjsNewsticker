@@ -9,5 +9,5 @@ if ($_GET['callback'] != '') {
   $end = '';
 }
 header('Content-type: ' . $mime . '; charset=utf-8');
-echo $_GET['callback'] . $start . '{"2": "This text will be updated every 30 seconds on-the-fly!", "1": "Last update: ' . date('Y-m-d h:i:s a') . '"}' . $end;
+echo $_GET['callback'] . $start . '{"1": "This text will be updated every 30 seconds on-the-fly!", "2": "Last update: ' . date('Y-m-d h:i:s a') . '"}' . $end;
 ?>

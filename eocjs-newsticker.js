@@ -93,16 +93,20 @@
         url: source,
         dataType: dataType,
         jsonpCallback: callback,
-        success: function(data) {
+        success: function(data, textStatus, jqXHR) {
           content = '';
-          for (let property in data) {
-            if (data.hasOwnProperty(property)) {
-              if (content === '') {
-                content = data[property] + ' ' + settings.divider;
-              } else {
-                content = content + ' ' + data[property] + ' ' + settings.divider;
+          if ($.isPlainObject(data) && !$.isEmptyObject(data)) {
+            for (let property in data) {
+              if (data.hasOwnProperty(property)) {
+                if (content === '') {
+                  content = data[property] + ' ' + settings.divider;
+                } else {
+                  content = content + ' ' + data[property] + ' ' + settings.divider;
+                }
               }
             }
+          } else {
+            content = 'Error: No data found. Check your remote source!';
           }
         }
       });
