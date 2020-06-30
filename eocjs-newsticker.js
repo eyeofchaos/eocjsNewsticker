@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.3.3
+ * eocjsNewsticker v0.3.4
  * Copyright (c) 2020 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
