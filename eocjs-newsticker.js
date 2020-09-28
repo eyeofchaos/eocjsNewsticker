@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.3.4
+ * eocjsNewsticker v0.3.5
  * Copyright (c) 2020 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -7,31 +7,33 @@
 (function($, window, document, undefined) {
   $.fn.eocjsNewsticker = function(options) {
 
-    // _____ Options _____
+    // _______ Options _______
 
     let defaults = {
-      speed:    20,
-      timeout:  1,
-      divider:  '+++',
-      type:     'static',   // static or ajax
-      source:   '',         // ajax source (url)
-      dataType: 'json',     // data type of the expected file (json or jsonp)
-      callback: 'callback', // used for jsonp
-      interval: 120         // polling interval of the ajax source (seconds)
+      speed:     20,
+      timeout:   1,
+      divider:   '+++',
+      type:      'static',    // static or ajax
+      source:    '',          // ajax source (url)
+      dataType:  'json',      // data type of the expected file (json or jsonp)
+      callback:  'callback',  // used for jsonp
+      interval:  120          // polling interval of the ajax source (seconds)
     };
     let settings = $.extend({}, defaults, options);
 
+
     // _______ Inner Variables _______
 
-    let self = this;
-    let content = self.html();
-    let container = {};
-    let one = {};
-    let two = {};
-    let both = {};
-    let oneNeedsUpdate = false;
-    let twoNeedsUpdate = false;
-    let windowWidth = $(window).width();
+    let self            =  this;
+    let content         =  self.html();
+    let container       =  {};
+    let one             =  {};
+    let two             =  {};
+    let both            =  {};
+    let oneNeedsUpdate  =  false;
+    let twoNeedsUpdate  =  false;
+    let windowWidth     =  $(window).width();
+
 
     // _______ Init _______
 
@@ -40,18 +42,20 @@
       start();
     }
 
+
     // _______ Create _______
 
     function create() {
 
       self.addClass('eocjs-newsticker').html('<div class="eocjs-newsticker-container"><div class="eocjs-newsticker-one"></div><div class="eocjs-newsticker-two"></div></div>');
 
-      container = self.find('.eocjs-newsticker-container');
-      one = self.find('.eocjs-newsticker-one');
-      two = self.find('.eocjs-newsticker-two');
-      both = self.find('.eocjs-newsticker-one, .eocjs-newsticker-two');
+      container  =  self.find('.eocjs-newsticker-container');
+      one        =  self.find('.eocjs-newsticker-one');
+      two        =  self.find('.eocjs-newsticker-two');
+      both       =  self.find('.eocjs-newsticker-one, .eocjs-newsticker-two');
 
     }
+
 
     // _______ Start _______
 
@@ -85,6 +89,7 @@
 
     }
 
+
     // _______ Ajax _______
 
     function ajax(source, dataType, callback) {
@@ -113,6 +118,7 @@
 
     }
 
+
     // _______ Run _______
 
     function run(content, timeout) {
@@ -132,6 +138,7 @@
 
     }
 
+
     // _______ Update _______
 
     function update(slide, content) {
@@ -143,6 +150,7 @@
       slide.append('&nbsp;');
 
     }
+
 
     // _______ Animation _______
 
@@ -184,6 +192,7 @@
 
     }
 
+
     // _______ Resize _______
 
     $(window).on('resize', function() {
@@ -206,6 +215,7 @@
 
       }
     });
+
 
     // _______ Init _______
 
