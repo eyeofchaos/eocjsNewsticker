@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.3.5
+ * eocjsNewsticker v0.3.6
  * Copyright (c) 2020 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -128,8 +128,8 @@
 
       setTimeout(function() {
 
-        let width = one.width();
-        let speed = settings.speed * width;
+        let width  =  one.width();
+        let speed  =  settings.speed * width;
 
         animateSlide(one, 0, -width, speed);
         animateSlide(two, width, 0, speed);
