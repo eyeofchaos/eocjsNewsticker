@@ -30,7 +30,7 @@
   border: 2px solid #555555;
   border-top: 2px solid transparent;
   border-radius: 50%;
-  animation: eocjs-newsticker-spin 1s linear infinite;
+  animation: eocjs-newsticker-spin .75s linear infinite;
 }
 
 @keyframes eocjs-newsticker-spin {
