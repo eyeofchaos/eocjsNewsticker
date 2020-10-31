@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.3.6
+ * eocjsNewsticker v0.4.0
  * Copyright (c) 2020 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -26,6 +26,7 @@
 
     let self            =  this;
     let content         =  self.html();
+    let active          =  'eocjs-newsticker-active';
     let container       =  {};
     let one             =  {};
     let two             =  {};
@@ -38,8 +39,11 @@
     // _______ Init _______
 
     function init() {
-      create();
-      start();
+      if (!self.hasClass(active)) {
+        create();
+        start();
+        self.addClass(active);
+      }
     }
 
 
