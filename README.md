@@ -34,9 +34,7 @@ Leave the HTML empty and provide a source for AJAX load (see example)
 3. Invoke the newsticker on your selected HTML tag
 
 ```javascript
-$(function() {
-  $("#example").eocjsNewsticker();
-});
+$("#example").eocjsNewsticker();
 ```
 
 4. Options
