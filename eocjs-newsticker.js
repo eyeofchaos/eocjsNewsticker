@@ -1,6 +1,6 @@
 /*!
- * eocjsNewsticker v0.4.0
- * Copyright (c) 2020 Dieter Schmitt
+ * eocjsNewsticker v0.4.1
+ * Copyright (c) 2021 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
 
@@ -24,16 +24,17 @@
 
     // _______ Inner Variables _______
 
-    let self            =  this;
-    let content         =  self.html();
-    let active          =  'eocjs-newsticker-active';
-    let container       =  {};
-    let one             =  {};
-    let two             =  {};
-    let both            =  {};
-    let oneNeedsUpdate  =  false;
-    let twoNeedsUpdate  =  false;
-    let windowWidth     =  $(window).width();
+    let self              =  this;
+    let content           =  self.html();
+    let active            =  'eocjs-newsticker-active';
+    let container         =  {};
+    let one               =  {};
+    let two               =  {};
+    let both              =  {};
+    let oneNeedsUpdate    =  false;
+    let twoNeedsUpdate    =  false;
+    let localWindow       =  $(window);
+    let localWindowWidth  =  localWindow.width();
 
 
     // _______ Init _______
@@ -199,10 +200,13 @@
 
     // _______ Resize _______
 
-    $(window).on('resize', function() {
-      if ($(window).width() != windowWidth) {
+    localWindow.on('resize', function() {
+    
+      let width = localWindow.width();
+      
+      if (width != localWindowWidth) {
 
-        if ($(window).width() > windowWidth) {
+        if (width > localWindowWidth) {
           if (one.position().left > 0) {
             update(one, content);
             twoNeedsUpdate = true;
@@ -215,9 +219,10 @@
           twoNeedsUpdate = true;
         }
 
-        windowWidth = $(window).width();
+        localWindowWidth = width;
 
       }
+      
     });
 
 
