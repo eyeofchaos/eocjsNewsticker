@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.4.1
+ * eocjsNewsticker v0.4.2
  * Copyright (c) 2021 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -113,6 +113,14 @@
                 } else {
                   content = content + ' ' + data[property] + ' ' + settings.divider;
                 }
+              }
+            }
+          } else if (Array.isArray(data) && data.length > 0) {
+            for (let i = 0; i < data.length; i += 1) {
+              if (content === '') {
+                content = data[i] + ' ' + settings.divider;
+              } else {
+                content = content + ' ' + data[i] + ' ' + settings.divider;
               }
             }
           } else {
