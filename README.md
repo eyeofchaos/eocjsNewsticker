@@ -48,9 +48,12 @@ $("#example").eocjsNewsticker();
   * source: AJAX source (URL)
   * dataType:
     * json: Regular JSON file from same domain (default)
-    * jsonp: JSONP from any source, can be cross-domain
+    * jsonp: JSONP from any source, can be cross domain
   * callback: Used for jsonp (default: callback)
   * interval: Polling interval of the AJAX source (default: 120)
+  * direction:
+    * ltr: left-to-right scrolling (default)
+    * rtl: right-to-left scrolling
 
 ## Example
 

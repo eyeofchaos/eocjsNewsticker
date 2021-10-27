@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.4.2
+ * eocjsNewsticker v0.5.0
  * Copyright (c) 2021 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -10,14 +10,15 @@
     // _______ Options _______
 
     let defaults = {
-      speed:     20,
-      timeout:   1,
-      divider:   '+++',
-      type:      'static',    // static or ajax
-      source:    '',          // ajax source (url)
-      dataType:  'json',      // data type of the expected file (json or jsonp)
-      callback:  'callback',  // used for jsonp
-      interval:  120          // polling interval of the ajax source (seconds)
+      'speed':      20,
+      'timeout':    1,
+      'divider':    '+++',
+      'type':       'static',    // static or ajax
+      'source':     '',          // ajax source (url)
+      'dataType':   'json',      // data type of the expected file (json or jsonp)
+      'callback':   'callback',  // used for jsonp
+      'interval':   120,         // polling interval of the ajax source (seconds)
+      'direction':  'ltr'        // direction (ltr or rtl)
     };
     let settings = $.extend({}, defaults, options);
 
@@ -59,6 +60,8 @@
       two        =  self.find('.eocjs-newsticker-two');
       both       =  self.find('.eocjs-newsticker-one, .eocjs-newsticker-two');
 
+      both.css({[convert('start')]: 0, [convert('end')]: 'auto'})
+
     }
 
 
@@ -68,7 +71,7 @@
 
       if (settings.type === 'static') {
 
-        content = content + ' ' + settings.divider;
+        content = convert('prefix') + content + convert('suffix');
         run(content, (settings.timeout * 1000));
 
       } else if (settings.type === 'ajax') {
@@ -95,6 +98,32 @@
     }
 
 
+    // _______ Additional function for LTR/RTL conversion _______
+
+    function convert(type, data) {
+
+      let addition  =  '';
+      let dir       =  settings.direction;
+
+      if (type === 'prefix') {
+        data === undefined ? (dir !== 'rtl' ? addition = '' : addition = settings.divider + ' ') : (dir !== 'rtl' ? addition = data + ' ' : addition = settings.divider + ' ');
+      } else if (type === 'suffix') {
+        data === undefined ? (dir !== 'rtl' ? addition = ' ' + settings.divider : addition = '') : (dir !== 'rtl' ? addition = ' ' + settings.divider : addition = ' ' + data);
+      } else if (type === 'start') {
+        dir !== 'rtl' ? addition = 'left' : addition = 'right';
+      } else if (type === 'end') {
+        dir !== 'rtl' ? addition = 'right' : addition = 'left';
+      } else if (type === 'update') {
+        data === undefined ? (dir !== 'rtl' ? addition = 'append' : addition = 'prepend') : (dir !== 'rtl' ? addition = ' ' + data : addition = data + ' ');
+      } else if (type === 'position') {
+        addition = (dir !== 'rtl' && data.position().left > 0) || (dir === 'rtl' && (container.width() - (data.position().left + data.width())) > 0);
+      }
+
+      return addition;
+
+    }
+
+
     // _______ Ajax _______
 
     function ajax(source, dataType, callback) {
@@ -109,18 +138,18 @@
             for (let property in data) {
               if (data.hasOwnProperty(property)) {
                 if (content === '') {
-                  content = data[property] + ' ' + settings.divider;
+                  content = convert('prefix') + data[property] + convert('suffix');
                 } else {
-                  content = content + ' ' + data[property] + ' ' + settings.divider;
+                  content = convert('prefix', content) + data[property] +  convert('suffix', content);
                 }
               }
             }
           } else if (Array.isArray(data) && data.length > 0) {
             for (let i = 0; i < data.length; i += 1) {
               if (content === '') {
-                content = data[i] + ' ' + settings.divider;
+                content = convert('prefix') + data[i] + convert('suffix');
               } else {
-                content = content + ' ' + data[i] + ' ' + settings.divider;
+                content = convert('prefix', content) + data[i] +  convert('suffix', content);
               }
             }
           } else {
@@ -137,7 +166,7 @@
     function run(content, timeout) {
 
       update(both, content);
-      two.css({'left': one.width()});
+      two.css({[convert('start')]: one.width()})
 
       setTimeout(function() {
 
@@ -158,9 +187,9 @@
 
       slide.html(content);
       while (container.width() > slide.width()) {
-        slide.append(' ' + content);
+        slide[convert('update')](convert('update', content));
       }
-      slide.append('&nbsp;');
+      slide[convert('update')]('&nbsp;');
 
     }
 
@@ -170,7 +199,7 @@
     function animateSlide(slide, start, destination, speed) {
 
       slide.animate(
-        {left: destination},
+        {[convert('start')]: destination},
         speed,
         'linear',
         function() {
@@ -189,7 +218,7 @@
 
             slide === one ? width = two.width() : width = one.width();
             speed = settings.speed * width;
-            slide.css({'left': width});
+            slide.css({[convert('start')]: width});
             animateSlide(slide, width, 0, speed);
 
           } else {
@@ -209,16 +238,16 @@
     // _______ Resize _______
 
     localWindow.on('resize', function() {
-    
+
       let width = localWindow.width();
-      
+
       if (width != localWindowWidth) {
 
         if (width > localWindowWidth) {
-          if (one.position().left > 0) {
+          if (convert('position', one)) {
             update(one, content);
             twoNeedsUpdate = true;
-          } else if (two.position().left > 0) {
+          } else if (convert('position', two)) {
             update(two, content);
             oneNeedsUpdate = true;
           }
@@ -230,7 +259,7 @@
         localWindowWidth = width;
 
       }
-      
+
     });
 
 
