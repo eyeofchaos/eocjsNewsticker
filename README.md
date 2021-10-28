@@ -52,8 +52,8 @@ $("#example").eocjsNewsticker();
   * callback: Used for jsonp (default: callback)
   * interval: Polling interval of the AJAX source (default: 120)
   * direction:
-    * ltr: left-to-right scrolling (default)
-    * rtl: right-to-left scrolling
+    * ltr: Left-to-right language scrolling (default)
+    * rtl: Right-to-left language scrolling
 
 ## Example
 
