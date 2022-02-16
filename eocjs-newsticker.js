@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.6.0
+ * eocjsNewsticker v0.6.1
  * Copyright (c) 2022 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -17,7 +17,7 @@
       source:     '',          // ajax source (url)
       dataType:   'json',      // data type of the expected file (json or jsonp)
       callback:   'callback',  // used for jsonp
-      fetch:      false,       // use fetch instead if $.ajax()
+      fetch:      false,       // use fetch instead of $.ajax()
       interval:   120,         // polling interval of the ajax source (seconds)
       direction:  'ltr'        // direction (ltr or rtl)
     };
