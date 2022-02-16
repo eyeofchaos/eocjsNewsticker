@@ -46,13 +46,13 @@ h2 {
   <h2>AJAX with JSONP (cross domain)</h2>
   <div id="example-3"></div>
 
+  <h2>Using the Fetch API</h2>
+  <div id="example-4"></div>
+
   <h2>Static (direction: rtl)</h2>
-  <div id="example-4">ثعلب بني سريع يقفز فوق كلب كسول</div>
+  <div id="example-5">ثعلب بني سريع يقفز فوق كلب كسول</div>
 
   <h2>AJAX with JSON (direction: rtl)</h2>
-  <div id="example-5"></div>
-
-  <h2>AJAX with JSONP (cross domain, direction: rtl)</h2>
   <div id="example-6"></div>
 
   <br><br>
@@ -67,51 +67,49 @@ h2 {
 <script>
 
 $('#example-1').eocjsNewsticker({
-  'speed':      25,
-  'timeout':    0.5
+  speed:      25,
+  timeout:    0.5
 });
 
 $('#example-2').eocjsNewsticker({
-  'divider':    '***',
-  'type':       'ajax',
-  'source':     'example-json.php',
-  'interval':   30
+  divider:    '***',
+  type:       'ajax',
+  source:     'example-json.php',
+  interval:   30
 });
 
 $('#example-3').eocjsNewsticker({
-  'speed':      15,
-  'divider':    '|',
-  'type':       'ajax',
-  'source':     'example-json.php',
-  'dataType':   'jsonp',
-  'callback':   'callbackLTR',
-  'interval':   30
+  speed:      15,
+  divider:    '|',
+  type:       'ajax',
+  source:     'example-json.php',
+  dataType:   'jsonp',
+  callback:   'callbackLTR',
+  interval:   30
 });
 
 $('#example-4').eocjsNewsticker({
-  'speed':      25,
-  'divider':    '***',
-  'timeout':    0.5,
-  'direction':  'rtl'
+  speed:      10,
+  divider:    '+',
+  type:       'ajax',
+  source:     'example-json.php',
+  fetch:      true,
+  interval:   30
 });
 
 $('#example-5').eocjsNewsticker({
-  'divider':    '***',
-  'type':       'ajax',
-  'source':     'example-json.php',
-  'interval':   30,
-  'direction':  'rtl'
+  speed:      25,
+  divider:    '***',
+  timeout:    0.5,
+  direction:  'rtl'
 });
 
 $('#example-6').eocjsNewsticker({
-  speed:        15,
-  divider:      '|',
-  type:         'ajax',
-  source:       'example-json.php',
-  dataType:     'jsonp',
-  callback:     'callbackRTL',
-  interval:     30,
-  direction:    'rtl'
+  divider:    '***',
+  type:       'ajax',
+  source:     'example-json.php',
+  interval:   30,
+  direction:  'rtl'
 });
 
 </script>

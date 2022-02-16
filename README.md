@@ -50,6 +50,7 @@ $("#example").eocjsNewsticker();
     * json: Regular JSON file from same domain (default)
     * jsonp: JSONP from any source, can be cross domain
   * callback: Used for jsonp (default: callback)
+  * fetch: Use fetch method instead of jQuery ajax (default: false)
   * interval: Polling interval of the AJAX source (default: 120)
   * direction:
     * ltr: Left-to-right language scrolling (default)

@@ -1,6 +1,6 @@
 /*!
- * eocjsNewsticker v0.5.1
- * Copyright (c) 2021 Dieter Schmitt
+ * eocjsNewsticker v0.6.0
+ * Copyright (c) 2022 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
 
@@ -10,15 +10,16 @@
     // _______ Options _______
 
     let defaults = {
-      'speed':      20,
-      'timeout':    1,
-      'divider':    '+++',
-      'type':       'static',    // static or ajax
-      'source':     '',          // ajax source (url)
-      'dataType':   'json',      // data type of the expected file (json or jsonp)
-      'callback':   'callback',  // used for jsonp
-      'interval':   120,         // polling interval of the ajax source (seconds)
-      'direction':  'ltr'        // direction (ltr or rtl)
+      speed:      20,
+      timeout:    1,
+      divider:    '+++',
+      type:       'static',    // static or ajax
+      source:     '',          // ajax source (url)
+      dataType:   'json',      // data type of the expected file (json or jsonp)
+      callback:   'callback',  // used for jsonp
+      fetch:      false,       // use fetch instead if $.ajax()
+      interval:   120,         // polling interval of the ajax source (seconds)
+      direction:  'ltr'        // direction (ltr or rtl)
     };
     let settings = $.extend({}, defaults, options);
 
@@ -77,15 +78,17 @@
       } else if (settings.type === 'ajax') {
 
         container.prepend('<div class="eocjs-newsticker-loader"></div>');
-        $.when(ajax(settings.source, settings.dataType, settings.callback)).done(function() {
+        $.when(ajax(settings.source, settings.dataType, settings.callback, settings.fetch)).done(function(data) {
 
+          setContent(data);
           container.find('.eocjs-newsticker-loader').fadeOut(300, function() {
             run(content, 0);
             $(this).remove();
           });
 
           setInterval(function() {
-            $.when(ajax(settings.source, settings.dataType, settings.callback)).done(function() {
+            $.when(ajax(settings.source, settings.dataType, settings.callback, settings.fetch)).done(function(data) {
+              setContent(data);
               oneNeedsUpdate = true;
               twoNeedsUpdate = true;
             });
@@ -126,37 +129,53 @@
 
     // _______ Ajax _______
 
-    function ajax(source, dataType, callback) {
+    function ajax(source, dataType, callback, useFetch) {
 
-      return $.ajax({
-        url: source,
-        dataType: dataType,
-        jsonpCallback: callback,
-        success: function(data, textStatus, jqXHR) {
-          content = '';
-          if ($.isPlainObject(data) && !$.isEmptyObject(data)) {
-            for (let property in data) {
-              if (data.hasOwnProperty(property)) {
-                if (content === '') {
-                  content = convert('prefix') + data[property] + convert('suffix');
-                } else {
-                  content = convert('prefix', content) + data[property] +  convert('suffix', content);
-                }
-              }
+      if (dataType === 'json' && useFetch) {
+
+        return fetch(source).then(function(response) {
+          return response.json();
+        });
+
+      } else {
+
+        return $.ajax({
+          url:            source,
+          dataType:       dataType,
+          jsonpCallback:  callback
+        });
+
+      }
+
+    }
+
+
+    // _______ setContent _______
+
+    function setContent(data) {
+
+      content = '';
+      if ($.isPlainObject(data) && !$.isEmptyObject(data)) {
+        for (let property in data) {
+          if (data.hasOwnProperty(property)) {
+            if (content === '') {
+              content = convert('prefix') + data[property] + convert('suffix');
+            } else {
+              content = convert('prefix', content) + data[property] +  convert('suffix', content);
             }
-          } else if (Array.isArray(data) && data.length > 0) {
-            for (let i = 0; i < data.length; i += 1) {
-              if (content === '') {
-                content = convert('prefix') + data[i] + convert('suffix');
-              } else {
-                content = convert('prefix', content) + data[i] +  convert('suffix', content);
-              }
-            }
-          } else {
-            content = 'Error: No data found. Check your remote source!';
           }
         }
-      });
+      } else if (Array.isArray(data) && data.length > 0) {
+        for (let i = 0; i < data.length; i += 1) {
+          if (content === '') {
+            content = convert('prefix') + data[i] + convert('suffix');
+          } else {
+            content = convert('prefix', content) + data[i] +  convert('suffix', content);
+          }
+        }
+      } else {
+        content = 'Error: No data found. Check your remote source!';
+      }
 
     }
 
