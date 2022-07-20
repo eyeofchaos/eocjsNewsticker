@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.6.1
+ * eocjsNewsticker v0.6.2
  * Copyright (c) 2022 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -61,7 +61,7 @@
       two        =  self.find('.eocjs-newsticker-two');
       both       =  self.find('.eocjs-newsticker-one, .eocjs-newsticker-two');
 
-      both.css({[convert('start')]: 0, [convert('end')]: 'auto'})
+      both.css({[convert('start')]: 0, [convert('end')]: 'auto'});
 
     }
 
@@ -82,7 +82,7 @@
 
           setContent(data);
           container.find('.eocjs-newsticker-loader').fadeOut(300, function() {
-            run(content, 0);
+            run(content, (settings.timeout * 1000));
             $(this).remove();
           });
 
@@ -182,12 +182,20 @@
 
     // _______ Run _______
 
+    function runInit(content) {
+    
+      update(both, content);
+      two.css({[convert('start')]: one.width()});
+      
+    }
+
     function run(content, timeout) {
 
-      update(both, content);
-      two.css({[convert('start')]: one.width()})
+      runInit(content);
 
       setTimeout(function() {
+
+        if (timeout > 0) runInit(content);
 
         let width  =  one.width();
         let speed  =  settings.speed * width;
