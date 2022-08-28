@@ -4,7 +4,7 @@ eocjsNewsticker is a fully responsive newsticker. It adjusts size and content to
 
 ## Requirements
 
-jQuery 3
+jQuery 3.5.1
 
 ## Usage
 
