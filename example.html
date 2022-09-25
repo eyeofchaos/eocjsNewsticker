@@ -43,17 +43,14 @@ h2 {
   <h2>AJAX with JSON</h2>
   <div id="example-2"></div>
 
-  <h2>AJAX with JSONP (cross domain)</h2>
+  <h2>Using the Fetch API</h2>
   <div id="example-3"></div>
 
-  <h2>Using the Fetch API</h2>
-  <div id="example-4"></div>
-
   <h2>Static (direction: rtl)</h2>
-  <div id="example-5">ثعلب بني سريع يقفز فوق كلب كسول</div>
+  <div id="example-4">ثعلب بني سريع يقفز فوق كلب كسول</div>
 
   <h2>AJAX with JSON (direction: rtl)</h2>
-  <div id="example-6"></div>
+  <div id="example-5"></div>
 
   <br><br>
   <div>For more information see the <a href="https://github.com/eyeofchaos/eocjsNewsticker" target="_blank">eocjsNewsticker GitHub repository</a>.</div>
@@ -78,16 +75,6 @@ $('#example-2').eocjsNewsticker({
 });
 
 $('#example-3').eocjsNewsticker({
-  speed:      15,
-  divider:    '|',
-  type:       'ajax',
-  source:     'example-json.php',
-  dataType:   'jsonp',
-  callback:   'callbackLTR',
-  interval:   30
-});
-
-$('#example-4').eocjsNewsticker({
   speed:      10,
   divider:    '+',
   type:       'ajax',
@@ -96,13 +83,13 @@ $('#example-4').eocjsNewsticker({
   interval:   30
 });
 
-$('#example-5').eocjsNewsticker({
+$('#example-4').eocjsNewsticker({
   speed:      25,
   divider:    '***',
   direction:  'rtl'
 });
 
-$('#example-6').eocjsNewsticker({
+$('#example-5').eocjsNewsticker({
   divider:    '***',
   type:       'ajax',
   source:     'example-json.php',

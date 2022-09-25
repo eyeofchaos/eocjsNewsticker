@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.6.2
+ * eocjsNewsticker v0.7.0
  * Copyright (c) 2022 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -13,13 +13,11 @@
       speed:      20,
       timeout:    1,
       divider:    '+++',
-      type:       'static',    // static or ajax
-      source:     '',          // ajax source (url)
-      dataType:   'json',      // data type of the expected file (json or jsonp)
-      callback:   'callback',  // used for jsonp
-      fetch:      false,       // use fetch instead of $.ajax()
-      interval:   120,         // polling interval of the ajax source (seconds)
-      direction:  'ltr'        // direction (ltr or rtl)
+      type:       'static',  // static or ajax
+      source:     '',        // ajax source (url)
+      fetch:      false,     // use fetch instead of $.ajax()
+      interval:   120,       // polling interval of the ajax source (seconds)
+      direction:  'ltr'      // direction (ltr or rtl)
     };
     let settings = $.extend({}, defaults, options);
 
@@ -78,7 +76,7 @@
       } else if (settings.type === 'ajax') {
 
         container.prepend('<div class="eocjs-newsticker-loader"></div>');
-        $.when(ajax(settings.source, settings.dataType, settings.callback, settings.fetch)).done(function(data) {
+        $.when(ajax(settings.source, settings.fetch)).done(function(data) {
 
           setContent(data);
           container.find('.eocjs-newsticker-loader').fadeOut(300, function() {
@@ -87,7 +85,7 @@
           });
 
           setInterval(function() {
-            $.when(ajax(settings.source, settings.dataType, settings.callback, settings.fetch)).done(function(data) {
+            $.when(ajax(settings.source, settings.fetch)).done(function(data) {
               setContent(data);
               oneNeedsUpdate = true;
               twoNeedsUpdate = true;
@@ -129,9 +127,9 @@
 
     // _______ Ajax _______
 
-    function ajax(source, dataType, callback, useFetch) {
+    function ajax(source, useFetch) {
 
-      if (dataType === 'json' && useFetch) {
+      if (useFetch) {
 
         return fetch(source).then(function(response) {
           return response.json();
@@ -140,9 +138,8 @@
       } else {
 
         return $.ajax({
-          url:            source,
-          dataType:       dataType,
-          jsonpCallback:  callback
+          url:       source,
+          dataType:  'json'
         });
 
       }
