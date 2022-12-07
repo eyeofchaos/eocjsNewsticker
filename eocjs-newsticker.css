@@ -29,7 +29,7 @@
   height: 20px;
   display: block;
   border: 3px solid #555555;
-  border-top: 2px solid transparent;
+  border-top: 3px solid transparent;
   border-radius: 50%;
   animation: eocjs-newsticker-spin .75s linear infinite;
 }
