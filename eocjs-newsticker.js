@@ -1,6 +1,6 @@
 /*!
  * eocjsNewsticker v0.7.1
- * Copyright (c) 2022 Dieter Schmitt
+ * Copyright (c) 2023 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
 
@@ -180,10 +180,10 @@
     // _______ Run _______
 
     function runInit(content) {
-    
+
       update(both, content);
       two.css({[convert('start')]: one.width()});
-      
+
     }
 
     function run(content, timeout) {
