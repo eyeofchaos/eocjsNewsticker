@@ -54,7 +54,7 @@ $("#example").eocjsNewsticker();
 
 ## Example
 
-Here are some working <a href="https://nightside.de/eocjs-newsticker/example.html">eocjsNewsticker examples</a>.
+Here are some working <a href="https://eyeofchaos.github.io/eocjs-newsticker/example.html">eocjsNewsticker examples</a>.
 
 ## License
 
