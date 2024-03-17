@@ -1,6 +1,6 @@
 /*!
- * eocjsNewsticker v0.7.2
- * Copyright (c) 2023 Dieter Schmitt
+ * eocjsNewsticker v0.7.3
+ * Copyright (c) 2024 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
 
@@ -70,6 +70,10 @@
 
       function start() {
 
+        let updateSource = function(src) {
+          return src + (src.indexOf('?') > -1 ? '&' : '?') + 'eocjs_ts=' + Math.floor(Date.now() / 1000);
+        };
+
         if (settings.type === 'static') {
 
           content = convert('prefix') + content + convert('suffix');
@@ -78,7 +82,7 @@
         } else if (settings.type === 'ajax') {
 
           container.prepend('<div class="eocjs-newsticker-loader"></div>');
-          $.when(ajax(settings.source, settings.fetch)).done(function(data) {
+          $.when(ajax(updateSource(settings.source), settings.fetch)).done(function(data) {
 
             setContent(data);
             container.find('.eocjs-newsticker-loader').fadeOut(300, function() {
@@ -87,7 +91,7 @@
             });
 
             setInterval(function() {
-              $.when(ajax(settings.source, settings.fetch)).done(function(data) {
+              $.when(ajax(updateSource(settings.source), settings.fetch)).done(function(data) {
                 setContent(data);
                 oneNeedsUpdate = true;
                 twoNeedsUpdate = true;
