@@ -5,61 +5,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>eocjsNewsticker: A jQuery newsticker plugin</title>
-<link rel="stylesheet" href="eocjs-newsticker.css">
-<style>
-
-*,
-::before,
-::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: arial, sans-serif;
-}
-
-h1,
-h2 {
-  margin: 1rem 0;
-}
-
-#container {
-  padding: 1rem;
-}
-
-</style>
+<link rel="stylesheet" href="/css/bootstrap-5.3.3/bootstrap.min.css">
+<link rel="stylesheet" href="/eocjs-newsticker/eocjs-newsticker.css?v=202403172200">
 </head>
 <body>
 
-<div id="container">
+<div id="container" class="p-3">
 
-  <h1>eocjsNewsticker examples</h1>
+  <h1 class="my-3">eocjsNewsticker examples</h1>
 
-  <h2>Static</h2>
+  <h2 class="my-3">Static</h2>
   <div id="example-1">The quick brown fox jumps over the lazy dog</div>
 
-  <h2>AJAX with JSON</h2>
+  <h2 class="my-3">AJAX with JSON</h2>
   <div id="example-2"></div>
 
-  <h2>Using the Fetch API</h2>
+  <h2 class="my-3">Using the Fetch API</h2>
   <div id="example-3"></div>
 
-  <h2>Static (direction: rtl)</h2>
+  <h2 class="my-3">Static (direction: rtl)</h2>
   <div id="example-4">ثعلب بني سريع يقفز فوق كلب كسول</div>
 
-  <h2>AJAX with JSON (direction: rtl)</h2>
+  <h2 class="my-3">AJAX with JSON (direction: rtl)</h2>
   <div id="example-5"></div>
 
-  <br><br>
-  <div>For more information see the <a href="https://github.com/eyeofchaos/eocjsNewsticker" target="_blank">eocjsNewsticker GitHub repository</a>.</div>
-  <br><br>
+  <div class="my-4">For more information see the <a href="https://github.com/eyeofchaos/eocjsNewsticker" target="_blank">eocjsNewsticker GitHub repository</a>.</div>
 
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="eocjs-newsticker.js"></script>
+<script src="/eocjs-newsticker/jquery-3.7.1.min.js"></script>
+<script src="/eocjs-newsticker/eocjs-newsticker.js?v=202403172200"></script>
 
 <script>
 
@@ -70,7 +45,7 @@ $('#example-1').eocjsNewsticker({
 $('#example-2').eocjsNewsticker({
   divider:    '***',
   type:       'ajax',
-  source:     'example-json.php',
+  source:     './example.json',
   interval:   30
 });
 
@@ -78,7 +53,7 @@ $('#example-3').eocjsNewsticker({
   speed:      10,
   divider:    '+',
   type:       'ajax',
-  source:     'example-json.php',
+  source:     './example.json',
   fetch:      true,
   interval:   30
 });
@@ -92,7 +67,7 @@ $('#example-4').eocjsNewsticker({
 $('#example-5').eocjsNewsticker({
   divider:    '***',
   type:       'ajax',
-  source:     'example-json.php',
+  source:     './example.json',
   interval:   30,
   direction:  'rtl'
 });
