@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.7.5
+ * eocjsNewsticker v0.7.6
  * Copyright (c) 2026 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -46,6 +46,7 @@
         if (!self.hasClass(active)) {
           create();
           start();
+          resize();
           self.addClass(active);
         }
       }
@@ -270,32 +271,36 @@
 
       // _______ Resize _______
 
-      localWindow.on('resize', function() {
+      function resize() {
 
-        if (!ready) return;
+        localWindow.on('resize', function() {
 
-        let width = localWindow.width();
+          if (!ready) return;
 
-        if (width != localWindowWidth) {
+          let width = localWindow.width();
 
-          if (width > localWindowWidth) {
-            if (convert('position', one)) {
-              update(one, content);
-              twoNeedsUpdate = true;
-            } else if (convert('position', two)) {
-              update(two, content);
+          if (width != localWindowWidth) {
+
+            if (width > localWindowWidth) {
+              if (convert('position', one)) {
+                update(one, content);
+                twoNeedsUpdate = true;
+              } else if (convert('position', two)) {
+                update(two, content);
+                oneNeedsUpdate = true;
+              }
+            } else {
               oneNeedsUpdate = true;
+              twoNeedsUpdate = true;
             }
-          } else {
-            oneNeedsUpdate = true;
-            twoNeedsUpdate = true;
+
+            localWindowWidth = width;
+
           }
 
-          localWindowWidth = width;
-
-        }
-
-      });
+        });
+      
+      }
 
 
       // _______ Init _______
