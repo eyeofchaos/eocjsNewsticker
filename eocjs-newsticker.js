@@ -1,5 +1,5 @@
 /*!
- * eocjsNewsticker v0.7.4
+ * eocjsNewsticker v0.7.5
  * Copyright (c) 2026 Dieter Schmitt
  * Released under the MIT license - https://opensource.org/licenses/MIT
  */
@@ -29,6 +29,7 @@
       let self              =  $(this);
       let content           =  self.html();
       let active            =  'eocjs-newsticker-active';
+      let ready             =  false;
       let container         =  {};
       let one               =  {};
       let two               =  {};
@@ -206,6 +207,8 @@
           animateSlide(one, 0, -width, speed);
           animateSlide(two, width, 0, speed);
 
+          ready = true;
+
         }, timeout);
 
       }
@@ -268,6 +271,8 @@
       // _______ Resize _______
 
       localWindow.on('resize', function() {
+
+        if (!ready) return;
 
         let width = localWindow.width();
 
